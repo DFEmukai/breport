@@ -8,778 +8,745 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
 
         :root {
-            --primary-color: #2b6cb0; /* 知的なブルー */
-            --secondary-color: #718096; /* 落ち着いたグレー */
-            --accent-color: #dd6b20;  /* ポイント強調のオレンジ */
-            --danger-color: #c53030;  /* 注意喚起の赤 */
-            --bg-color: #f7fafc;
-            --text-color: #2d3748;
+            --primary-color: #1e3a8a; /* 深いネイビーブルー */
+            --primary-light: #eff6ff; /* 薄いブルー背景用 */
+            --accent-color: #d97706;  /* 視認性の高いアンバー */
+            --text-main: #0f172a;     /* ほぼ黒に近いスレート */
+            --text-sub: #475569;      /* 落ち着いたグレー */
+            --danger-color: #dc2626;  /* 警告色の赤 */
+            --bg-body: #f1f5f9;       /* 全体の背景色（薄いグレー） */
             --white: #ffffff;
-            --border-radius: 6px;
+            --radius: 12px;           /* 角丸のサイズ */
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         body {
             font-family: 'Noto Sans JP', sans-serif;
             line-height: 1.8;
-            color: var(--text-color);
-            background-color: var(--bg-color);
+            color: var(--text-main);
+            background-color: var(--bg-body);
             margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 960px;
             margin: 0 auto;
             background-color: var(--white);
-            padding: 60px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            border-radius: var(--border-radius);
+            padding: 0 0 60px 0; /* 下部の余白 */
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            overflow: hidden; /* ヘッダーの角丸対応 */
         }
 
-        /* Header Section */
+        /* Header Section - Modern Gradient */
         header {
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 20px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 50px 60px;
+            text-align: left;
             margin-bottom: 50px;
-            text-align: center;
+        }
+
+        .header-content {
+            border-left: 5px solid var(--accent-color);
+            padding-left: 20px;
         }
 
         h1 {
-            font-size: 28px;
-            color: var(--text-color);
-            margin-bottom: 10px;
+            font-size: 32px;
+            color: white;
+            margin: 5px 0 15px 0;
+            letter-spacing: 0.05em;
         }
 
         .subtitle {
             font-size: 16px;
-            color: var(--secondary-color);
-            font-weight: 500;
-            margin-bottom: 5px;
+            color: #bfdbfe; /* 薄い青 */
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
-        /* Section Styling */
-        section {
-            margin-bottom: 60px;
+        .meta-info {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #dbeafe;
+            opacity: 0.9;
         }
 
+        /* Main Content Wrapper */
+        .content-wrapper {
+            padding: 0 60px;
+        }
+
+        /* Typography */
         h2 {
-            font-size: 20px;
+            font-size: 24px;
             color: var(--primary-color);
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 2px solid #cbd5e1;
             padding-bottom: 10px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background-color: var(--accent-color);
+            margin-right: 12px;
+            border-radius: 4px;
         }
 
         h3 {
             font-size: 18px;
             margin-bottom: 15px;
-            color: #2d3748;
-            border-left: 4px solid var(--primary-color);
-            padding-left: 10px;
-            background-color: #f7fafc;
-            padding-top: 5px;
-            padding-bottom: 5px;
+            color: var(--text-main);
+            font-weight: 700;
         }
 
         p {
             margin-bottom: 20px;
             text-align: justify;
+            color: var(--text-sub);
+        }
+
+        strong {
+            color: var(--text-main);
+            background: linear-gradient(transparent 70%, #fde68a 70%); /* マーカー風 */
         }
 
         /* 2-Column Grid */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
         }
 
         @media (max-width: 768px) {
             .grid-2 {
                 grid-template-columns: 1fr;
             }
+            header, .content-wrapper {
+                padding: 30px;
+            }
         }
 
-        /* Box Styles */
+        /* Modern Box Styles */
         .box {
-            background-color: #fff;
-            border: 1px solid #cbd5e0;
-            padding: 20px;
-            border-radius: var(--border-radius);
+            background-color: var(--white);
+            border: 1px solid #e2e8f0;
+            padding: 25px;
+            border-radius: var(--radius);
             height: 100%;
             box-sizing: border-box;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s;
+        }
+        
+        .box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         
         .box-gray {
-            background-color: #f8f9fa;
+            background-color: #f8fafc;
             border: 1px solid #e2e8f0;
         }
 
         .box-warning {
-            background-color: #fff5f5;
-            border: 1px solid #fc8181;
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
             border-left: 5px solid var(--danger-color);
         }
 
         .box-info {
-            background-color: #ebf8ff;
-            border: 1px solid #4299e1;
+            background-color: var(--primary-light);
+            border: 1px solid #bfdbfe;
+            border-left: 5px solid var(--primary-color);
         }
         
         .box-alert {
-            background-color: #fffaf0; 
-            border: 1px solid #f6e05e;
+            background-color: #fffbeb; 
+            border: 1px solid #fcd34d;
+            border-left: 5px solid var(--accent-color);
         }
 
-        /* Table */
+        /* Table Design */
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate; /* 角丸のため */
+            border-spacing: 0;
             margin-top: 20px;
             font-size: 0.95em;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius);
+            overflow: hidden;
         }
 
         th, td {
-            border: 1px solid #e2e8f0;
-            padding: 12px;
+            padding: 15px;
             text-align: left;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         th {
-            background-color: #edf2f7;
-            color: var(--text-color);
-            font-weight: bold;
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            font-weight: 700;
+            border-right: 1px solid #e2e8f0;
+        }
+        
+        td {
+            border-right: 1px solid #e2e8f0;
         }
 
-        tr:nth-child(even) {
-            background-color: #fcfcfc;
+        th:last-child, td:last-child {
+            border-right: none;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
         }
 
-        /* Synergy Concept */
+        /* Synergy Section */
         .synergy-section {
-            border: 1px solid #bee3f8;
-            background-color: #ebf8ff;
-            padding: 20px;
-            border-radius: var(--border-radius);
+            background-color: var(--primary-light);
+            padding: 30px;
+            border-radius: var(--radius);
+            border: 1px dashed #93c5fd;
         }
 
+        /* Tags */
         .tag {
             display: inline-block;
-            background-color: var(--secondary-color);
+            background-color: var(--text-sub);
             color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
             margin-bottom: 10px;
+            text-transform: uppercase;
         }
         
         .tag-primary { background-color: var(--primary-color); }
         .tag-accent { background-color: var(--accent-color); }
 
-        /* Glossary Styles */
-        .glossary-item {
-            margin-bottom: 15px;
-            border-bottom: 1px dashed #e2e8f0;
-            padding-bottom: 10px;
+        /* Glossary & FAQ Items */
+        .glossary-item, .faq-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
         }
+        .glossary-item:last-child, .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
         .glossary-term {
             font-weight: bold;
             color: var(--primary-color);
             display: block;
             margin-bottom: 5px;
+            font-size: 1.05em;
         }
-        .glossary-desc {
-            font-size: 0.95em;
-            color: #4a5568;
-        }
-
-        /* FAQ Styles */
-        .faq-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 20px;
-        }
+        
         .faq-question {
             font-weight: bold;
-            color: var(--text-color);
+            color: var(--text-main);
             display: flex;
             align-items: flex-start;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 1.05em;
         }
         .faq-question::before {
             content: "Q.";
             color: var(--accent-color);
-            font-weight: bold;
+            font-weight: 900;
             margin-right: 10px;
-            font-size: 1.1em;
         }
         .faq-answer {
-            color: #4a5568;
-            padding-left: 28px;
+            color: var(--text-sub);
+            padding-left: 25px;
             font-size: 0.95em;
         }
 
-        /* Print Button */
-        .no-print {
-            text-align: center;
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-        
-        button {
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        /* 印刷専用スタイル */
-        @media print {
-            @page {
-                margin: 15mm; /* 用紙の余白設定 */
-                size: auto;   /* 用紙サイズ自動 */
-            }
-
-            body {
-                padding: 0;
-                margin: 0;
-                background-color: white;
-                color: black;
-                font-size: 10.5pt; /* フォントサイズを印刷向けに縮小 */
-                line-height: 1.5;  /* 行間を少し詰める */
-                -webkit-print-color-adjust: exact; /* 背景色を強制的に印刷 */
-                print-color-adjust: exact;
-            }
-
-            .container {
-                box-shadow: none;
-                padding: 0;
-                max-width: 100%;
-                margin: 0;
-                width: 100%;
-            }
-
-            .no-print { display: none; }
-
-            /* セクションごとの改ページ制御 */
-            section {
-                page-break-inside: avoid;
-                margin-bottom: 30px;
-            }
-
-            h1 { font-size: 22px; margin-bottom: 10px; }
-            h2 { font-size: 16px; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #ccc; }
-            h3 { font-size: 14px; margin-bottom: 10px; border-left: 4px solid #999; }
-
-            /* 2カラムレイアウトの維持と間隔調整 */
-            .grid-2 {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-            }
-
-            /* ボックス要素の枠線を印刷向けに調整 */
-            .box, .box-gray, .box-warning, .box-info, .box-alert {
-                border: 1px solid #ccc;
-                padding: 15px;
-                page-break-inside: avoid;
-            }
-
-            /* テーブルの文字サイズ調整 */
-            table {
-                font-size: 9pt;
-                width: 100%;
-            }
-            th, td {
-                padding: 8px;
-                border: 1px solid #999;
-            }
-
-            /* リンクのURL表示などを防ぐ */
-            a { text-decoration: none; color: black; }
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <header>
-            <div class="subtitle">障害福祉サービス事業 基礎調査資料</div>
-            <h1>就労継続支援B型事業 調査報告書</h1>
-            <div style="text-align: right; font-size: 14px; margin-top: 15px;">
-                作成日：2026年1月7日<br>
-                作成者：DFE・向井
+            <div class="header-content">
+                <div class="subtitle">障害福祉サービス事業 基礎調査資料</div>
+                <h1>就労継続支援B型事業 調査報告書</h1>
+                <div class="meta-info">
+                    作成日：2026年1月7日 &nbsp;|&nbsp; 作成者：DFE・向井
+                </div>
             </div>
         </header>
 
-        <!-- 1. 調査の目的 -->
-        <section>
-            <h2>1. 調査の目的</h2>
-            <p>本報告書は、障害者総合支援法に基づく福祉サービス「就労継続支援B型」の事業構造、法的要件、および収益モデルについて調査・整理したものである。また、当社が保有する既存リソース（渋谷本社、千葉県大網の介護施設群）との親和性についても検証を行い、新規事業としての参入可能性を判断するための基礎資料とする。</p>
-        </section>
+        <div class="content-wrapper">
+            <!-- 1. 調査の目的 -->
+            <section>
+                <h2>1. 調査の目的</h2>
+                <p>本報告書は、障害者総合支援法に基づく福祉サービス「就労継続支援B型」の事業構造、法的要件、および収益モデルについて調査・整理したものである。また、当社が保有する既存リソース（渋谷本社、千葉県大網の介護施設群）との親和性についても検証を行い、新規事業としての参入可能性を判断するための基礎資料とする。</p>
+            </section>
 
-        <!-- 2. 制度概要 -->
-        <section>
-            <h2>2. 制度の概要と定義</h2>
-            <p>就労継続支援B型は、一般企業での就労が困難な障害者に対し、生産活動の機会を提供する「非雇用型」のサービスである。</p>
-            
-            <div class="box box-gray">
-                <ul style="margin: 0; padding-left: 20px; font-size: 15px;">
-                    <li style="margin-bottom: 8px;"><strong>法的根拠:</strong> 障害者総合支援法 第5条第14項</li>
-                    <li style="margin-bottom: 8px;"><strong>契約形態:</strong> <span style="font-weight:bold;">雇用契約なし</span>（利用者は労働者ではなく利用者という扱い）</li>
-                    <li style="margin-bottom: 8px;"><strong>賃金体系:</strong> 最低賃金の適用除外。「工賃」として成果報酬を支払う。</li>
-                    <li style="margin-bottom: 8px;"><strong>対象者:</strong> 就労経験があるが年齢・体力面で一般雇用が困難な者、50歳以上の者、障害基礎年金1級受給者など。</li>
-                    <li><strong>定員基準:</strong> 原則20名以上（地方部や多機能型による例外あり）。</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- 3. A型との比較 -->
-        <section>
-            <h2>3. 就労継続支援A型との違い</h2>
-            <p>類似サービスである「就労継続支援A型（雇用型）」との主な違いは、雇用契約の有無とそれに伴う賃金体系にある。対象となる利用者の層も異なるため、事業選定において理解が不可欠である。</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width: 20%;">項目</th>
-                        <th style="width: 40%;">就労継続支援 A型</th>
-                        <th style="width: 40%; background-color: #ebf8ff;">就労継続支援 B型（本件）</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>雇用契約</strong></td>
-                        <td><strong>あり</strong></td>
-                        <td style="background-color: #ebf8ff;"><strong>なし</strong>（非雇用）</td>
-                    </tr>
-                    <tr>
-                        <td><strong>賃金・報酬</strong></td>
-                        <td><strong>最低賃金以上</strong>の給与</td>
-                        <td style="background-color: #ebf8ff;">成果報酬としての<strong>工賃</strong><br><span style="font-size:12px;">（月額平均 約1.6万円程度）</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>対象者</strong></td>
-                        <td>一定の就労能力がある人</td>
-                        <td style="background-color: #ebf8ff;">年齢・体力面等で雇用が困難な人</td>
-                    </tr>
-                    <tr>
-                        <td><strong>年齢制限</strong></td>
-                        <td>原則 18歳〜65歳未満</td>
-                        <td style="background-color: #ebf8ff;"><strong>なし</strong>（高齢者も利用可）</td>
-                    </tr>
-                    <tr>
-                        <td><strong>事業性</strong></td>
-                        <td>労働法規の遵守が必要で、<br>経営難易度が高い</td>
-                        <td style="background-color: #ebf8ff;">比較的柔軟な運営が可能で、<br>福祉的側面が強い</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- 4. 就業場所の形態 -->
-        <section>
-            <h2>4. 就業場所の形態</h2>
-            <p>本事業では、利用者の特性や事業所の方針に合わせ、主に以下の3つの形態で就労支援が行われる。</p>
-            
-            <div class="grid-2">
-                <div class="box">
-                    <h3>① 施設内就労</h3>
-                    <p>利用者が事業所に通所し、施設内の設備を使用して作業を行う最も一般的な形態。</p>
-                    <ul style="font-size: 14px; padding-left: 20px;">
-                        <li><strong>例:</strong> 軽作業、カフェ運営、パン製造、データ入力など。</li>
-                        <li><strong>特徴:</strong> スタッフの目が届きやすく、安定した支援が可能。</li>
-                    </ul>
-                </div>
-                <div class="box">
-                    <h3>② 施設外就労</h3>
-                    <p>利用者と職員がユニットを組み、<strong>企業等の現場へ出向いて</strong>作業を行う形態。</p>
-                    <ul style="font-size: 14px; padding-left: 20px;">
-                        <li><strong>例:</strong> 企業の清掃、工場ライン作業、農作業など。</li>
-                        <li><strong>特徴:</strong> 一般就労に近い環境で訓練ができ、工賃が高くなる傾向がある。</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="box" style="margin-top: 20px;">
-                <h3>③ 在宅就労（テレワーク）</h3>
-                <p>通所が困難な事情がある利用者が、自宅で生産活動を行う形態。近年増加傾向にある。</p>
-                <ul style="font-size: 14px; padding-left: 20px;">
-                    <li><strong>要件:</strong> 定期的な通所（週1回など）や、日々の連絡体制の確保が必要。</li>
-                    <li><strong>例:</strong> PC作業、小物製作などの持ち帰り作業。</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- 5. 収益構造 -->
-        <section>
-            <h2>5. ビジネスモデルと収益構造</h2>
-            <p>本事業の財務構造は、公的な「給付費収入」と、事業活動による「事業収入」の2つの会計が厳格に区分されている点が最大の特徴である。</p>
-            
-            <div class="grid-2">
-                <div class="box">
-                    <span class="tag tag-primary">運営資金</span>
-                    <h3>① 訓練等給付費（公費）</h3>
-                    <p>事業所の主な収入源。</p>
-                    <ul style="font-size: 14px; padding-left: 20px;">
-                        <li><strong>支払元:</strong> 国・自治体（国保連）</li>
-                        <li><strong>使途:</strong> 職員人件費、家賃、事業所利益</li>
-                        <li><strong>決定要因:</strong> 利用者の通所日数 × 報酬単価<br><span style="color:var(--secondary-color); font-size:12px;">※報酬単価は「平均工賃額」の実績により変動する。</span></li>
-                    </ul>
-                </div>
-                <div class="box">
-                    <span class="tag tag-accent">利用者工賃</span>
-                    <h3>② 事業収入（売上）</h3>
-                    <p>生産活動（パン販売、軽作業等）による売上。</p>
-                    <ul style="font-size: 14px; padding-left: 20px;">
-                        <li><strong>支払元:</strong> 顧客、取引先企業</li>
-                        <li><strong>使途:</strong> 原材料費等の経費を除き、<strong>全額を利用者へ還元</strong>する。</li>
-                        <li><strong>制限:</strong> 原則として、ここから事業所の利益を計上することはできない。</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. 運営上の重要課題 -->
-        <section>
-            <h2>6. 事業運営における重要指標（KPI）</h2>
-            <p>事業を安定継続させるためには、以下のサイクルを回すことが求められる。国の報酬体系は「利用者に高い工賃を支払える事業所」を優遇する設計となっている。</p>
-            <ol style="background-color: #fff; border: 1px solid #cbd5e0; padding: 20px 40px; border-radius: 6px;">
-                <li style="margin-bottom: 10px;"><strong>仕事の確保:</strong> 安定かつ単価の良い作業案件を獲得する。</li>
-                <li style="margin-bottom: 10px;"><strong>工賃の向上:</strong> 獲得した収益を利用者に還元し、平均工賃を引き上げる。</li>
-                <li><strong>報酬単価の上昇:</strong> 実績に基づき、国からの基本報酬単価がアップし、事業収益が増加する。</li>
-            </ol>
-            <p style="margin-top: 15px; font-size: 14px; color: var(--secondary-color);">※逆に、仕事がなく工賃が低いままだと、国からの報酬単価も低く設定され、経営難に陥るリスクがある。</p>
-        </section>
-
-        <!-- 7. 既存事業とのシナジー検証 -->
-        <section>
-            <h2>7. 自社保有リソース（千葉県大網エリア）の活用検証</h2>
-            <p>当社において本事業を展開する場合、千葉県大網に展開する既存介護施設群が「仕事の現場」として機能するかを検証した。</p>
-
-            <div class="box box-info" style="margin-bottom: 20px;">
-                <h3 style="background:none; border:none; padding:0; color: #2b6cb0; margin-bottom: 5px;">📍 自社保有アセット（千葉県大網）</h3>
-                <ul style="margin-bottom: 0;">
-                    <li><strong>有料老人ホーム:</strong> 3施設</li>
-                    <li><strong>デイサービス:</strong> 1事業所</li>
-                    <li><strong>訪問型介護支援:</strong> 1事業所</li>
-                    <li><strong>合計:</strong> 5拠点の運営基盤あり</li>
-                </ul>
-            </div>
-
-            <div class="synergy-section">
-                <h3>活用モデル：施設外就労（業務委託）</h3>
-                <p>B型事業所の利用者が、上記の大網エリアの各施設へ出向き、周辺業務を受託するモデル。</p>
+            <!-- 2. 制度概要 -->
+            <section>
+                <h2>2. 制度の概要と定義</h2>
+                <p>就労継続支援B型は、一般企業での就労が困難な障害者に対し、生産活動の機会を提供する「非雇用型」のサービスである。</p>
                 
-                <table style="background-color: white;">
-                    <tr>
-                        <th style="width: 20%;">連携内容</th>
-                        <td>
-                            <strong>老人ホーム3施設分のボリューム:</strong><br>
-                            ・居室清掃、リネン交換（毎日発生）<br>
-                            ・共用部、食堂の清掃<br>
-                            ・敷地内の除草、窓拭き<br>
-                            ・（要検討）調理補助、配膳下膳
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>メリット</th>
-                        <td>
-                            ・<strong>仕事量の安定:</strong> 3施設分の業務量は膨大であり、数十名規模のB型利用者の作業を確保可能。<br>
-                            ・<strong>採用コスト削減:</strong> 清掃パート等の採用難を、B型委託により恒久的に解決できる。
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- リスク管理（コンプライアンス） -->
-            <div class="box box-warning" style="margin-top: 20px;">
-                <h3 style="color: var(--danger-color); border:none; padding:0; background:none; font-size: 16px;">⚠️ グループ内取引における留意点（コンプライアンス）</h3>
-                <p style="font-size: 14px; margin-bottom: 0;">グループ企業間で業務発注を行う際は、以下の点に注意が必要である。</p>
-                <ul style="font-size: 14px; margin-top: 10px;">
-                    <li><strong>適正価格の遵守:</strong> 相見積もりを取得し、市場価格と乖離した高額発注（利益供与）を行わないこと。</li>
-                    <li><strong>実態の証明:</strong> 業務日報や成果物により、実際に作業が行われたことを記録・保管すること。</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- 8. 自力で立ち上げる場合の要件と手続き -->
-        <section>
-            <h2>8. 自力で立ち上げる場合の要件と手続き（新規指定申請）</h2>
-            <p>M&Aを行わず、自社でゼロから開業（新規指定）を行う場合は、都道府県（または政令指定都市・中核市）から「障害福祉サービス事業者」としての指定を受ける必要がある。以下にその主要な要件と手続きを整理する。</p>
-
-            <div class="box" style="margin-bottom: 30px;">
-                <h3 style="margin-top:0; border:none; padding:0; color: var(--primary-color);">必要な4つの基準（これら全てを満たす必要がある）</h3>
-                <hr style="border:none; border-top:1px dashed #cbd5e0; margin: 10px 0;">
-                
-                <div style="margin-bottom: 20px;">
-                    <strong>① 法人基準（誰がやるか）</strong>
-                    <p style="font-size: 14px; margin: 5px 0 0 0; padding-left: 15px;">
-                        個人事業主では開業できない。株式会社、合同会社、NPO法人、社会福祉法人などの「法人格」が必要。定款の事業目的に「障害福祉サービス事業」等の記載が必須となる。
-                    </p>
-                </div>
-
-                <div style="margin-bottom: 20px;">
-                    <strong>② 人員基準（誰が働くか）<span style="color: var(--danger-color); font-size: 0.9em;"> ※最大の難関</span></strong>
-                    <p style="font-size: 14px; margin: 5px 0 0 0; padding-left: 15px;">
-                        以下のスタッフを確保する必要がある（定員20名の場合）。
-                    </p>
-                    <ul style="font-size: 14px; margin-top: 5px; padding-left: 35px;">
-                        <li><strong>管理者（1名）：</strong> 施設の責任者。資格不問の場合が多い。</li>
-                        <li><strong>サービス管理責任者（1名）：</strong> <span style="text-decoration: underline;">実務経験（3〜8年）と研修修了が必須。</span>採用難易度が極めて高いキーマン。</li>
-                        <li><strong>職業指導員・生活支援員（計4〜5名）：</strong> 利用者のサポートを行う現場スタッフ。</li>
+                <div class="box box-gray">
+                    <ul style="margin: 0; padding-left: 20px; font-size: 15px;">
+                        <li style="margin-bottom: 8px;"><strong>法的根拠:</strong> 障害者総合支援法 第5条第14項</li>
+                        <li style="margin-bottom: 8px;"><strong>契約形態:</strong> <span style="font-weight:bold; color: var(--danger-color);">雇用契約なし</span>（利用者は労働者ではなく利用者という扱い）</li>
+                        <li style="margin-bottom: 8px;"><strong>賃金体系:</strong> 最低賃金の適用除外。「工賃」として成果報酬を支払う。</li>
+                        <li style="margin-bottom: 8px;"><strong>対象者:</strong> 就労経験があるが年齢・体力面で一般雇用が困難な者、50歳以上の者、障害基礎年金1級受給者など。</li>
+                        <li><strong>定員基準:</strong> 原則20名以上（地方部や多機能型による例外あり）。</li>
                     </ul>
                 </div>
+            </section>
 
-                <div style="margin-bottom: 20px;">
-                    <strong>③ 設備基準（どんな場所か）</strong>
-                    <p style="font-size: 14px; margin: 5px 0 0 0; padding-left: 15px;">
-                        単なる事務所ではなく、以下の要件を満たす物件が必要。建築基準法や消防法の適合も必須。
-                    </p>
-                    <ul style="font-size: 14px; margin-top: 5px; padding-left: 35px;">
-                        <li><strong>訓練・作業室：</strong> 利用者1人あたり3.3㎡以上のスペース。</li>
-                        <li><strong>相談室：</strong> プライバシーが守れる個室やパーテーション区画。</li>
-                        <li><strong>その他：</strong> バリアフリートイレ、手洗い場、事務室など。</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <strong>④ 運営基準（どう運営するか）</strong>
-                    <p style="font-size: 14px; margin: 5px 0 0 0; padding-left: 15px;">
-                        運営規程の作成、苦情解決体制の整備、事故発生時の対応マニュアルなど、適切なサービス提供体制が整っていること。
-                    </p>
-                </div>
-            </div>
-
-            <div class="box box-gray">
-                <h3 style="margin-top:0; border:none; padding:0; color: #2d3748;">一般的な開業スケジュール（4〜6ヶ月程度）</h3>
-                <table style="background-color: transparent; margin-top: 10px;">
-                    <tr>
-                        <th style="width: 20%;">STEP 1</th>
-                        <td><strong>法人設立・物件探索</strong><br><span style="font-size:12px;">※物件契約前に必ず行政へ図面相談を行うこと（契約後に「基準を満たさない」と判明するリスク回避のため）。</span></td>
-                    </tr>
-                    <tr>
-                        <th>STEP 2</th>
-                        <td><strong>人材採用・事前協議</strong><br><span style="font-size:12px;">※サービス管理責任者の確保が完了しないと申請に進めない。</span></td>
-                    </tr>
-                    <tr>
-                        <th>STEP 3</th>
-                        <td><strong>本申請・現地確認</strong><br><span style="font-size:12px;">指定希望日の2ヶ月前〜1ヶ月前頃に書類を提出。行政担当者が現地確認に来る場合もある。</span></td>
-                    </tr>
-                    <tr>
-                        <th>STEP 4</th>
-                        <td><strong>指定・開業</strong><br><span style="font-size:12px;">毎月1日が指定日（オープン日）となるのが一般的。</span></td>
-                    </tr>
-                </table>
-            </div>
-        </section>
-
-        <!-- 9. 具体的なM&A案件の検討（ケーススタディ） -->
-        <section>
-            <h2>9. 具体的な検討案件（M&A）の概要と評価</h2>
-            <p>新規参入の手段として提案されている「関東エリアの既存事業者譲渡案件」について、当社の地理的条件（渋谷・千葉大網）を踏まえたシナジー分析を行う。</p>
-            
-            <div class="box box-info">
-                <h3 style="background:none; border:none; padding:0; color: #2b6cb0; margin-bottom: 10px;">📄 案件概要（関東エリア）</h3>
-                <hr style="border:none; border-top:1px dashed #4299e1; margin-bottom: 15px;">
-                <div class="grid-2">
-                    <ul style="margin:0; padding-left:20px; font-size:14px;">
-                        <li style="margin-bottom:5px;"><strong>エリア:</strong> 関東（登録利用者400名以上）</li>
-                        <li style="margin-bottom:5px;"><strong>売上規模:</strong> 約7億円</li>
-                        <li style="margin-bottom:5px;"><strong>修正後EBITDA:</strong> 約3.2億円（進行期見込 4億円超）</li>
-                        <li><strong>譲渡希望額:</strong> 10億円以上（応相談）</li>
-                    </ul>
-                    <ul style="margin:0; padding-left:20px; font-size:14px;">
-                        <li style="margin-bottom:5px;"><strong>強み:</strong> 給付金額が最高水準（＝高工賃・高単価の実績あり）</li>
-                        <li style="margin-bottom:5px;"><strong>体制:</strong> キーマン継続により自走経営可能</li>
-                        <li><strong>譲渡理由:</strong> 選択と集中（別事業への展開）</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="margin-top: 30px;">
-                <h3 style="font-size: 18px; margin-bottom: 15px;">当社資産（渋谷・千葉大網）とのマッチング分析</h3>
+            <!-- 3. A型との比較 -->
+            <section>
+                <h2>3. 就労継続支援A型との違い</h2>
+                <p>類似サービスである「就労継続支援A型（雇用型）」との主な違いは、雇用契約の有無とそれに伴う賃金体系にある。対象となる利用者の層も異なるため、事業選定において理解が不可欠である。</p>
                 <table>
-                    <tr>
-                        <th style="width: 20%; background-color: #ebf8ff;">メリット<br>（シナジー）</th>
-                        <td>
-                            <ul style="margin:0; padding-left:20px;">
-                                <li style="margin-bottom:8px;"><strong>大網施設の業務請負（条件付き）:</strong><br>もし買収対象の拠点が「千葉エリア」や「大網への送迎圏内」にあれば、老人ホーム3施設分の清掃業務を即座に委託可能。400名の利用者のうち、施設外就労チームを編成して送り込める。</li>
-                                <li style="margin-bottom:8px;"><strong>渋谷本社の事務受託（リモート完結）:</strong><br>PC作業（スキャン、入力等）が中心であれば、利用者が渋谷へ出社する必要はない。データ共有によるテレワークや施設内作業で完結するため、<strong>物理的な距離に関わらず発注が可能</strong>であり、確実なシナジーが見込める。</li>
-                                <li><strong>経営の安定化:</strong><br>既存介護事業（5拠点）に加え、高収益な福祉事業（売上7億）が加わることで、ポートフォリオの分散とキャッシュフローの強化が図れる。</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="background-color: #fff5f5;">懸念点<br>（リスク）</th>
-                        <td>
-                            <ul style="margin:0; padding-left:20px;">
-                                <li style="margin-bottom:8px;"><strong>地理的ミスマッチの可能性（清掃業務等）:</strong><br>「関東」が埼玉や北関東を指す場合、大網の施設への派遣は物理的に不可能。この場合、現場作業（清掃委託等）のシナジーは発生しない（事務作業のみ可能となる）。</li>
-                                <li style="margin-bottom:8px;"><strong>管理コストの増大:</strong><br>渋谷（本社）⇔大網（介護）⇔M&A拠点（不明）の3地点管理となる。特にB型は現場管理が重要なため、物理的距離が離れすぎているとガバナンスが効きにくくなる。</li>
-                            </ul>
-                        </td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">項目</th>
+                            <th style="width: 40%;">就労継続支援 A型</th>
+                            <th style="width: 40%; background-color: var(--primary-light);">就労継続支援 B型（本件）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>雇用契約</strong></td>
+                            <td><strong>あり</strong></td>
+                            <td style="background-color: var(--primary-light);"><strong>なし</strong>（非雇用）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>賃金・報酬</strong></td>
+                            <td><strong>最低賃金以上</strong>の給与</td>
+                            <td style="background-color: var(--primary-light);">成果報酬としての<strong>工賃</strong><br><span style="font-size:12px;">（月額平均 約1.6万円程度）</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>対象者</strong></td>
+                            <td>一定の就労能力がある人</td>
+                            <td style="background-color: var(--primary-light);">年齢・体力面等で雇用が困難な人</td>
+                        </tr>
+                        <tr>
+                            <td><strong>年齢制限</strong></td>
+                            <td>原則 18歳〜65歳未満</td>
+                            <td style="background-color: var(--primary-light);"><strong>なし</strong>（高齢者も利用可）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>事業性</strong></td>
+                            <td>労働法規の遵守が必要で、<br>経営難易度が高い</td>
+                            <td style="background-color: var(--primary-light);">比較的柔軟な運営が可能で、<br>福祉的側面が強い</td>
+                        </tr>
+                    </tbody>
                 </table>
-            </div>
+            </section>
 
-            <div class="box" style="margin-top: 20px; border: 1px solid #718096;">
-                <h3 style="background:none; border:none; padding:0; color: #2d3748; margin-bottom: 10px;">【重要】施設外就労における「物理的な距離」の制約</h3>
-                <p>法律で一律に「半径◯km以内」と禁止されているわけではありませんが、<strong>実務上および行政指導上の強力な制約（限界ライン）</strong>が存在します。もしM&A対象の事業所が千葉県大網から遠く離れていた場合、連携が不可能になる理由は主に以下の3点です。</p>
+            <!-- 4. 就業場所の形態 -->
+            <section>
+                <h2>4. 就業場所の形態</h2>
+                <p>本事業では、利用者の特性や事業所の方針に合わせ、主に以下の3つの形態で就労支援が行われる。</p>
                 
-                <div style="margin-bottom: 15px;">
-                    <strong style="color: var(--primary-color);">1. 移動時間の壁（片道1時間が限界）</strong>
-                    <p style="font-size: 14px; margin-top: 5px;">施設外就労は、基本的に「事業所に集合→職員の車で現場へ移動→作業→事業所へ戻る」という流れになります。</p>
-                    <ul style="font-size: 14px; margin-top: 5px;">
-                        <li><strong>工賃への影響:</strong> 移動時間は「作業時間」ではないため、移動が長いほど作業時間が減り、利用者さんが稼げる工賃が減ってしまいます。</li>
-                        <li><strong>体力の問題:</strong> 障害特性上、長時間の車移動が困難な方も多く、一般的には<strong>「片道30分〜1時間以内」</strong>が送迎可能な限界ラインとされています。</li>
+                <div class="grid-2">
+                    <div class="box">
+                        <span class="tag">Standard</span>
+                        <h3>① 施設内就労</h3>
+                        <p>利用者が事業所に通所し、施設内の設備を使用して作業を行う最も一般的な形態。</p>
+                        <ul style="font-size: 14px; padding-left: 20px; color: var(--text-sub);">
+                            <li><strong>例:</strong> 軽作業、カフェ運営、パン製造、データ入力など。</li>
+                            <li><strong>特徴:</strong> スタッフの目が届きやすく、安定した支援が可能。</li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <span class="tag tag-accent">Key Factor</span>
+                        <h3>② 施設外就労</h3>
+                        <p>利用者と職員がユニットを組み、<strong>企業等の現場へ出向いて</strong>作業を行う形態。</p>
+                        <ul style="font-size: 14px; padding-left: 20px; color: var(--text-sub);">
+                            <li><strong>例:</strong> 企業の清掃、工場ライン作業、農作業など。</li>
+                            <li><strong>特徴:</strong> 一般就労に近い環境で訓練ができ、工賃が高くなる傾向がある。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box" style="margin-top: 20px;">
+                    <h3>③ 在宅就労（テレワーク）</h3>
+                    <p>通所が困難な事情がある利用者が、自宅で生産活動を行う形態。近年増加傾向にある。</p>
+                    <ul style="font-size: 14px; padding-left: 20px; color: var(--text-sub);">
+                        <li><strong>要件:</strong> 定期的な通所（週1回など）や、日々の連絡体制の確保が必要。</li>
+                        <li><strong>例:</strong> PC作業、小物製作などの持ち帰り作業。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 5. 収益構造 -->
+            <section>
+                <h2>5. ビジネスモデルと収益構造</h2>
+                <p>本事業の財務構造は、公的な「給付費収入」と、事業活動による「事業収入」の2つの会計が厳格に区分されている点が最大の特徴である。</p>
+                
+                <div class="grid-2">
+                    <div class="box">
+                        <span class="tag tag-primary">運営資金</span>
+                        <h3>① 訓練等給付費（公費）</h3>
+                        <p>事業所の主な収入源。</p>
+                        <ul style="font-size: 14px; padding-left: 20px; color: var(--text-sub);">
+                            <li><strong>支払元:</strong> 国・自治体（国保連）</li>
+                            <li><strong>使途:</strong> 職員人件費、家賃、事業所利益</li>
+                            <li><strong>決定要因:</strong> 利用者の通所日数 × 報酬単価<br><span style="color:var(--text-sub); font-size:12px;">※報酬単価は「平均工賃額」の実績により変動する。</span></li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <span class="tag tag-accent">利用者工賃</span>
+                        <h3>② 事業収入（売上）</h3>
+                        <p>生産活動（パン販売、軽作業等）による売上。</p>
+                        <ul style="font-size: 14px; padding-left: 20px; color: var(--text-sub);">
+                            <li><strong>支払元:</strong> 顧客、取引先企業</li>
+                            <li><strong>使途:</strong> 原材料費等の経費を除き、<strong>全額を利用者へ還元</strong>する。</li>
+                            <li><strong>制限:</strong> 原則として、ここから事業所の利益を計上することはできない。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. 運営上の重要課題 -->
+            <section>
+                <h2>6. 事業運営における重要指標（KPI）</h2>
+                <p>事業を安定継続させるためには、以下のサイクルを回すことが求められる。国の報酬体系は「利用者に高い工賃を支払える事業所」を優遇する設計となっている。</p>
+                <ol style="background-color: var(--white); border: 1px solid #cbd5e0; padding: 25px 40px; border-radius: var(--radius); box-shadow: var(--shadow);">
+                    <li style="margin-bottom: 15px;"><strong>仕事の確保:</strong> 安定かつ単価の良い作業案件を獲得する。</li>
+                    <li style="margin-bottom: 15px;"><strong>工賃の向上:</strong> 獲得した収益を利用者に還元し、平均工賃を引き上げる。</li>
+                    <li><strong>報酬単価の上昇:</strong> 実績に基づき、国からの基本報酬単価がアップし、事業収益が増加する。</li>
+                </ol>
+                <p style="margin-top: 15px; font-size: 14px; color: var(--danger-color);">※逆に、仕事がなく工賃が低いままだと、国からの報酬単価も低く設定され、経営難に陥るリスクがある。</p>
+            </section>
+
+            <!-- 7. 既存事業とのシナジー検証 -->
+            <section>
+                <h2>7. 自社保有リソース（千葉県大網エリア）の活用検証</h2>
+                <p>当社において本事業を展開する場合、千葉県大網に展開する既存介護施設群が「仕事の現場」として機能するかを検証した。</p>
+
+                <div class="box box-info" style="margin-bottom: 25px;">
+                    <h3 style="background:none; border:none; padding:0; color: var(--primary-color); margin-bottom: 10px;">📍 自社保有アセット（千葉県大網）</h3>
+                    <ul style="margin-bottom: 0;">
+                        <li><strong>有料老人ホーム:</strong> 3施設</li>
+                        <li><strong>デイサービス:</strong> 1事業所</li>
+                        <li><strong>訪問型介護支援:</strong> 1事業所</li>
+                        <li style="margin-top: 5px; border-top: 1px dashed #bfdbfe; padding-top: 5px;"><strong>合計:</strong> 5拠点の運営基盤あり</li>
                     </ul>
                 </div>
 
-                <div style="margin-bottom: 15px;">
-                    <strong style="color: var(--primary-color);">2. コストの問題（採算割れ）</strong>
-                    <p style="font-size: 14px; margin-top: 5px;">移動にかかるガソリン代、車両維持費、高速代、そして「運転している職員の人件費」は、すべて事業所の経費（持ち出し）となります。遠方の現場に行けば行くほど経費が膨らみ、せっかくの売上（清掃委託費など）が消えてしまいます。</p>
+                <div class="synergy-section">
+                    <h3 style="color: var(--primary-color);">活用モデル：施設外就労（業務委託）</h3>
+                    <p>B型事業所の利用者が、上記の大網エリアの各施設へ出向き、周辺業務を受託するモデル。</p>
+                    
+                    <table style="background-color: white;">
+                        <tr>
+                            <th style="width: 25%;">連携内容</th>
+                            <td>
+                                <strong>老人ホーム3施設分のボリューム:</strong><br>
+                                ・居室清掃、リネン交換（毎日発生）<br>
+                                ・共用部、食堂の清掃<br>
+                                ・敷地内の除草、窓拭き<br>
+                                ・（要検討）調理補助、配膳下膳
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>メリット</th>
+                            <td>
+                                ・<strong>仕事量の安定:</strong> 3施設分の業務量は膨大であり、数十名規模のB型利用者の作業を確保可能。<br>
+                                ・<strong>採用コスト削減:</strong> 清掃パート等の採用難を、B型委託により恒久的に解決できる。
+                            </td>
+                        </tr>
+                    </table>
                 </div>
 
-                <div style="margin-bottom: 15px;">
-                    <strong style="color: var(--primary-color);">3. 行政（指定権者）の判断</strong>
-                    <p style="font-size: 14px; margin-top: 5px;">事業所の指定権者（都道府県や市町村）は、「支援として合理的か」を判断します。「往復3時間かけて、2時間だけ掃除をする」といった計画は、利用者の負担が大きすぎるとして、施設外就労として認められない（または指導対象となる）可能性が高いです。</p>
+                <!-- リスク管理（コンプライアンス） -->
+                <div class="box box-warning" style="margin-top: 25px;">
+                    <h3 style="color: var(--danger-color); border:none; padding:0; background:none; font-size: 16px;">⚠️ グループ内取引における留意点（コンプライアンス）</h3>
+                    <p style="font-size: 14px; margin-bottom: 0;">グループ企業間で業務発注を行う際は、以下の点に注意が必要である。</p>
+                    <ul style="font-size: 14px; margin-top: 10px;">
+                        <li><strong>適正価格の遵守:</strong> 相見積もりを取得し、市場価格と乖離した高額発注（利益供与）を行わないこと。</li>
+                        <li><strong>実態の証明:</strong> 業務日報や成果物により、実際に作業が行われたことを記録・保管すること。</li>
+                    </ul>
                 </div>
+            </section>
 
-                <div style="background-color: #f7fafc; padding: 15px; border-radius: 4px; font-weight: bold; color: var(--danger-color);">
-                    結論：<br>
-                    そのため、今回のM&A検討においては、<u>「対象の事業所から、大網の施設まで車で日常的に通える距離か（できれば片道45分圏内）」</u>というのが、シナジー（清掃業務の委託）を生むための絶対条件になります。
-                    <br><span style="font-weight:normal; font-size: 0.9em; color: #2d3748;">※ただし、上述の通り「渋谷本社のPC事務」についてはリモートで対応可能なため、距離の制約を受けません。</span>
-                </div>
-            </div>
+            <!-- 8. 自力で立ち上げる場合の要件と手続き -->
+            <section>
+                <h2>8. 自力で立ち上げる場合の要件と手続き（新規指定申請）</h2>
+                <p>M&Aを行わず、自社でゼロから開業（新規指定）を行う場合は、都道府県（または政令指定都市・中核市）から「障害福祉サービス事業者」としての指定を受ける必要がある。</p>
 
-            <div class="box box-alert" style="margin-top: 20px;">
-                <h3 style="background:none; border:none; padding:0; color: #b7791f; font-size: 16px;">✅ 本案件検討に向けたTODOリスト</h3>
-                <ul style="font-size: 14px; margin-top: 10px;">
-                    <li style="font-weight:bold; color:#c53030;">最優先：対象事業所の「詳細住所」の特定</li>
-                    <li style="list-style:none; margin-bottom:10px; margin-left:20px;">
-                        大網の施設から車で片道30分〜45分圏内か？<br>
-                        → 圏内なら「買い（高シナジー）」<br>
-                        → 圏外なら「純投資（シナジーなし）」としての判断が必要
-                    </li>
-                    <li><strong>利用者内訳の確認:</strong> 400名のうち、施設外就労（清掃等）に対応可能な利用者が何割いるか。</li>
-                    <li><strong>「最高水準」の根拠DD:</strong> 高い給付費を維持している要因が、特定の企業への依存（下請け）ではないか確認。M&A後にその仕事が継続するかがカギ。</li>
-                </ul>
-            </div>
-        </section>
+                <div class="box" style="margin-bottom: 30px;">
+                    <h3 style="margin-top:0; border:none; padding:0; color: var(--primary-color);">必要な4つの基準</h3>
+                    <hr style="border:none; border-top:1px dashed #cbd5e0; margin: 15px 0;">
+                    
+                    <div style="margin-bottom: 20px;">
+                        <strong>① 法人基準（誰がやるか）</strong>
+                        <p style="font-size: 14px; margin: 5px 0 0 0; padding-left: 15px;">
+                            株式会社、合同会社、NPO法人、社会福祉法人などの「法人格」が必要。定款の事業目的に「障害福祉サービス事業」等の記載が必須。
+                        </p>
+                    </div>
 
-        <!-- 10. 収支モデル比較 -->
-        <section>
-            <h2>10. 収支モデルの比較シミュレーション</h2>
-            <p>一般的な運営モデルと、自社リソースを活用（高工賃化）した場合の月次収支比較は以下の通り試算される。（定員20名、稼働率90%想定）</p>
+                    <div style="margin-bottom: 20px;">
+                        <strong>② 人員基準（誰が働くか）<span style="color: var(--danger-color); font-size: 0.9em;"> ※最大の難関</span></strong>
+                        <p style="font-size: 14px; margin: 5px 0 0 0; padding-left: 15px;">
+                            以下のスタッフを確保する必要がある（定員20名の場合）。
+                        </p>
+                        <ul style="font-size: 14px; margin-top: 5px; padding-left: 35px;">
+                            <li><strong>管理者（1名）：</strong> 施設の責任者。資格不問の場合が多い。</li>
+                            <li><strong>サービス管理責任者（1名）：</strong> <span style="text-decoration: underline;">実務経験（3〜8年）と研修修了が必須。</span>採用難易度が高い。</li>
+                            <li><strong>職業指導員・生活支援員（計4〜5名）：</strong> 利用者のサポートを行う現場スタッフ。</li>
+                        </ul>
+                    </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width: 25%;">項目</th>
-                        <th style="width: 35%;">モデルA：標準型<br><span style="font-size:11px; font-weight:normal;">（軽作業・内職中心）</span></th>
-                        <th style="width: 35%;">モデルB：連携活用型<br><span style="font-size:11px; font-weight:normal;">（施設外就労メイン）</span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>平均工賃</strong></td>
-                        <td>約 1.5万円 /月</td>
-                        <td><strong>4.5万円以上 /月</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>基本報酬単価</strong></td>
-                        <td>低〜中水準</td>
-                        <td><strong>高水準</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>月間売上予測</strong><br><span style="font-size:11px;">(給付費収入)</span></td>
-                        <td>約 270万円</td>
-                        <td><strong>約 350万〜390万円</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>考察</strong></td>
-                        <td>一般的な内職作業のみでは収益性が低くなりがちである。</td>
-                        <td>自社案件による工賃向上が、事業所収益の大幅な改善に直結する。</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+                    <div style="margin-bottom: 20px;">
+                        <strong>③ 設備基準（どんな場所か）</strong>
+                        <p style="font-size: 14px; margin: 5px 0 0 0; padding-left: 15px;">
+                            <strong>訓練・作業室</strong>（利用者1人あたり3.3㎡以上）、<strong>相談室</strong>（個室等）、バリアフリートイレ、事務室などが必要。
+                        </p>
+                    </div>
 
-        <!-- 11. 総括 -->
-        <section>
-            <h2>11. 総括</h2>
-            <p>就労継続支援B型事業は、国からの給付費による安定性を持ちつつも、利用者の工賃向上（＝事業収入の確保）が経営の鍵を握るモデルである。</p>
-            <p>当社においては、<strong>千葉県大網に「3つの有料老人ホーム」を含む5拠点の介護アセット</strong>を有しており、ここから排出される清掃・リネン交換等の業務量は、B型事業所にとって極めて魅力的な「仕事の源泉」となる。</p>
-            <p>検討中のM&A案件については、対象拠点の立地が「大網エリアへのアクセス圏内」であるかどうかが最大の判断材料となる。もし地理的条件が合致すれば、大規模な利用者（400名）と豊富な業務量（老人ホーム3棟分）が即座に結びつき、極めて高い投資対効果が期待できる。</p>
-        </section>
-
-        <!-- 12. よくある質問 (FAQ) -->
-        <section>
-            <h2>12. よくある質問（FAQ）</h2>
-            <p>開業や運営に関して、頻出する疑問点を以下にまとめました。</p>
-            <div class="box">
-                <div class="faq-item">
-                    <div class="faq-question">就業場所は「施設内」「施設外」の1つしか選べないのですか？</div>
-                    <div class="faq-answer">
-                        いいえ、<strong>組み合わせが可能</strong>です。実際に多くの事業所が、「Aチームは施設内でパン作り、Bチームは施設外で清掃」といった形で並行運用しています。これにより、利用者の適性に合わせた配置が可能となり、リスク分散にもつながります。
+                    <div>
+                        <strong>④ 運営基準（どう運営するか）</strong>
+                        <p style="font-size: 14px; margin: 5px 0 0 0; padding-left: 15px;">
+                            運営規程の作成、苦情解決体制の整備、事故発生時の対応マニュアルなどの整備。
+                        </p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">利用者（障害者）は集まるのでしょうか？</div>
-                    <div class="faq-answer">
-                        待っているだけでは集まりません。地域の「相談支援事業所」や特別支援学校、ハローワークとの関係構築が不可欠です。ただし、「工賃が高い（稼げる）」という実績がある事業所は利用者からの人気が高く、定員が埋まりやすい傾向にあります。
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">介護事業所のスタッフが、B型事業所のスタッフを兼務できますか？</div>
-                    <div class="faq-answer">
-                        原則としては「専従（その仕事専門）」が求められますが、一定の条件（共生型サービスとしての指定など）を満たせば兼務が可能です。ただし、勤務時間の管理や報酬請求が複雑になるため、初期段階では明確に分ける運用が推奨されます。
-                    </div>
-                </div>
-                <div class="faq-item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
-                    <div class="faq-question">開業にあたって最大のハードルは何ですか？</div>
-                    <div class="faq-answer">
-                        「物件の確保」と「有資格者（サービス管理責任者）の採用」です。特にサービス管理責任者は実務経験要件が厳しく、人材不足が続いているため、事業計画の最初期から採用活動を行う必要があります。
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- 13. 用語集 -->
-        <section>
-            <h2>13. 【補足資料】用語集：これってどういう意味？</h2>
-            <p>本レポートに登場する専門用語を、平易な言葉で解説します。</p>
-            <div class="box" style="background-color: #f7fafc;">
-                <div class="glossary-item">
-                    <span class="glossary-term">就労継続支援B型（しゅうろうけいぞくしえんびーがた）</span>
-                    <span class="glossary-desc">障害のある方が、雇用契約を結ばずに自分のペースで働く場所のこと。A型は「雇用あり（バイトに近い）」、B型は「雇用なし（リハビリに近い）」という違いがあります。</span>
+                <div class="box box-gray">
+                    <h3 style="margin-top:0; border:none; padding:0; color: var(--text-main);">一般的な開業スケジュール（4〜6ヶ月程度）</h3>
+                    <table style="background-color: transparent; margin-top: 10px; border:none;">
+                        <tr style="background:none;">
+                            <th style="width: 20%; background:none; border:none; border-bottom:1px solid #ccc;">STEP 1</th>
+                            <td style="background:none; border:none; border-bottom:1px solid #ccc;"><strong>法人設立・物件探索</strong><br><span style="font-size:12px; color: var(--text-sub);">※物件契約前に必ず行政へ図面相談を行うこと。</span></td>
+                        </tr>
+                        <tr>
+                            <th style="background:none; border:none; border-bottom:1px solid #ccc;">STEP 2</th>
+                            <td style="background:none; border:none; border-bottom:1px solid #ccc;"><strong>人材採用・事前協議</strong><br><span style="font-size:12px; color: var(--text-sub);">※サービス管理責任者の確保が完了しないと申請に進めない。</span></td>
+                        </tr>
+                        <tr>
+                            <th style="background:none; border:none; border-bottom:1px solid #ccc;">STEP 3</th>
+                            <td style="background:none; border:none; border-bottom:1px solid #ccc;"><strong>本申請・現地確認</strong><br><span style="font-size:12px; color: var(--text-sub);">指定希望日の2ヶ月前〜1ヶ月前頃に書類を提出。</span></td>
+                        </tr>
+                        <tr>
+                            <th style="background:none; border:none;">STEP 4</th>
+                            <td style="background:none; border:none;"><strong>指定・開業</strong><br><span style="font-size:12px; color: var(--text-sub);">毎月1日が指定日（オープン日）となるのが一般的。</span></td>
+                        </tr>
+                    </table>
                 </div>
-                <div class="glossary-item">
-                    <span class="glossary-term">工賃（こうちん）</span>
-                    <span class="glossary-desc">利用者さんが作業をして受け取るお金のこと。雇用契約がないので法律上「給料」や「賃金」と言えず、「工賃」と呼びます。金額は作業の売上から支払われます。</span>
-                </div>
-                <div class="glossary-item">
-                    <span class="glossary-term">訓練等給付費（くんれんとうきゅうふひ）</span>
-                    <span class="glossary-desc">事業所のメインの売上（運営費）のこと。利用者さんが1日通うごとに、国（役所）から事業所へ支払われる報酬です。だいたい1日1人あたり6,000円〜7,000円前後です。</span>
-                </div>
-                <div class="glossary-item">
-                    <span class="glossary-term">国保連（こくほれん）</span>
-                    <span class="glossary-desc">正式名称は「国民健康保険団体連合会」。役所の代わりに、毎月の売上（給付費）の審査や振込をしてくれる機関です。</span>
-                </div>
-                <div class="glossary-item">
-                    <span class="glossary-term">施設外就労（しせつがいしゅうろう）</span>
-                    <span class="glossary-desc">利用者さんとスタッフがチームになって、外の企業（今回の場合は当社の介護施設）へ行って作業すること。いわゆる「出向」や「請負作業」に近いイメージです。</span>
-                </div>
-                <div class="glossary-item">
-                    <span class="glossary-term">EBITDA（イービットディーエー）</span>
-                    <span class="glossary-desc">「金利・税金・償却前利益」のこと。会計上のテクニックを除いた、その会社が稼ぎ出す純粋なキャッシュフロー（現金収入）の実力を示す指標。M&Aで会社の値段を決める際によく使われます。</span>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <div class="no-print">
-            <button onclick="window.print()">🖨 このレポートを印刷 / PDF保存</button>
+            <!-- 9. 具体的なM&A案件の検討（ケーススタディ） -->
+            <section>
+                <h2>9. 具体的な検討案件（M&A）の概要と評価</h2>
+                <p>新規参入の手段として提案されている「関東エリアの既存事業者譲渡案件」について、当社の地理的条件（渋谷・千葉大網）を踏まえたシナジー分析を行う。</p>
+                
+                <div class="box box-info">
+                    <h3 style="background:none; border:none; padding:0; color: var(--primary-color); margin-bottom: 10px;">📄 案件概要（関東エリア）</h3>
+                    <hr style="border:none; border-top:1px dashed #bfdbfe; margin-bottom: 15px;">
+                    <div class="grid-2">
+                        <ul style="margin:0; padding-left:20px; font-size:14px;">
+                            <li style="margin-bottom:5px;"><strong>エリア:</strong> 関東（登録利用者400名以上）</li>
+                            <li style="margin-bottom:5px;"><strong>売上規模:</strong> 約7億円</li>
+                            <li style="margin-bottom:5px;"><strong>修正後EBITDA:</strong> 約3.2億円（進行期見込 4億円超）</li>
+                            <li><strong>譲渡希望額:</strong> 10億円以上（応相談）</li>
+                        </ul>
+                        <ul style="margin:0; padding-left:20px; font-size:14px;">
+                            <li style="margin-bottom:5px;"><strong>強み:</strong> 給付金額が最高水準（＝高工賃・高単価の実績あり）</li>
+                            <li style="margin-bottom:5px;"><strong>体制:</strong> キーマン継続により自走経営可能</li>
+                            <li><strong>譲渡理由:</strong> 選択と集中（別事業への展開）</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <h3>当社資産（渋谷・千葉大網）とのマッチング分析</h3>
+                    <table>
+                        <tr>
+                            <th style="width: 25%; background-color: var(--primary-light);">メリット<br>（シナジー）</th>
+                            <td>
+                                <ul style="margin:0; padding-left:20px;">
+                                    <li style="margin-bottom:10px;"><strong>大網施設の業務請負（条件付き）:</strong><br>もし買収対象の拠点が「千葉エリア」や「大網への送迎圏内」にあれば、老人ホーム3施設分の清掃業務を即座に委託可能。</li>
+                                    <li style="margin-bottom:10px;"><strong>渋谷本社の事務受託（リモート完結）:</strong><br>PC作業（スキャン、入力等）が中心であれば、利用者が渋谷へ出社する必要はない。データ共有によるテレワークや施設内作業で完結するため、<strong>物理的な距離に関わらず発注が可能</strong>であり、確実なシナジーが見込める。</li>
+                                    <li><strong>経営の安定化:</strong><br>既存介護事業（5拠点）に加え、高収益な福祉事業（売上7億）が加わることで、ポートフォリオの分散とキャッシュフローの強化が図れる。</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #fef2f2; color: var(--danger-color);">懸念点<br>（リスク）</th>
+                            <td>
+                                <ul style="margin:0; padding-left:20px;">
+                                    <li style="margin-bottom:10px;"><strong>地理的ミスマッチの可能性（清掃業務等）:</strong><br>「関東」が埼玉や北関東を指す場合、大網の施設への派遣は物理的に不可能。この場合、現場作業（清掃委託等）のシナジーは発生しない（事務作業のみ可能となる）。</li>
+                                    <li><strong>管理コストの増大:</strong><br>渋谷（本社）⇔大網（介護）⇔M&A拠点（不明）の3地点管理となる。特にB型は現場管理が重要なため、物理的距離が離れすぎているとガバナンスが効きにくくなる。</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="box" style="margin-top: 25px; border: 2px solid var(--text-sub);">
+                    <h3 style="background:none; border:none; padding:0; color: var(--text-main); margin-bottom: 10px;">【重要】施設外就労における「物理的な距離」の制約</h3>
+                    <p>法律で一律に「半径◯km以内」と禁止されているわけではありませんが、<strong>実務上および行政指導上の強力な制約（限界ライン）</strong>が存在します。</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+                        <div style="background: var(--bg-body); padding: 15px; border-radius: 8px;">
+                            <strong style="color: var(--primary-color);">1. 移動時間の壁（片道1時間が限界）</strong>
+                            <p style="font-size: 14px; margin: 5px 0 0 0;">移動時間は「作業時間」に含まれず、工賃低下につながる。また障害特性上、長時間の車移動は困難。</p>
+                        </div>
+                        <div style="background: var(--bg-body); padding: 15px; border-radius: 8px;">
+                            <strong style="color: var(--primary-color);">2. コストの問題（採算割れ）</strong>
+                            <p style="font-size: 14px; margin: 5px 0 0 0;">ガソリン代、高速代、運転手の人件費は事業所の持ち出しとなる。遠方は赤字リスクが高い。</p>
+                        </div>
+                        <div style="background: var(--bg-body); padding: 15px; border-radius: 8px;">
+                            <strong style="color: var(--primary-color);">3. 行政（指定権者）の判断</strong>
+                            <p style="font-size: 14px; margin: 5px 0 0 0;">「往復3時間で作業2時間」等は、支援として不適切とみなされ、認められない可能性が高い。</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px; padding: 15px; background-color: var(--primary-color); color: white; border-radius: 8px; font-weight: bold; text-align: center;">
+                        結論：M&A対象事業所が「大網の施設まで車で片道45分圏内」かどうかが、清掃業務シナジーの可否を分ける。
+                        <br><span style="font-weight:normal; font-size: 0.9em; opacity: 0.9;">※渋谷本社のPC事務についてはリモート対応可能なため、この制約を受けない。</span>
+                    </div>
+                </div>
+
+                <div class="box box-alert" style="margin-top: 25px;">
+                    <h3 style="background:none; border:none; padding:0; color: var(--accent-color); font-size: 18px;">✅ 本案件検討に向けたTODOリスト</h3>
+                    <ul style="font-size: 15px; margin-top: 15px;">
+                        <li style="font-weight:bold; color:var(--danger-color); margin-bottom: 8px;">最優先：対象事業所の「詳細住所」の特定</li>
+                        <li style="list-style:none; margin-bottom:12px; margin-left:20px; font-size: 14px; color: var(--text-sub);">
+                            大網の施設から車で片道30分〜45分圏内か？<br>
+                            → 圏内なら「買い（高シナジー）」<br>
+                            → 圏外なら「純投資（シナジーなし）」としての判断が必要
+                        </li>
+                        <li style="margin-bottom: 8px;"><strong>利用者内訳の確認:</strong> 400名のうち、施設外就労（清掃等）に対応可能な利用者が何割いるか。</li>
+                        <li><strong>「最高水準」の根拠DD:</strong> 高い給付費を維持している要因が、特定の企業への依存（下請け）ではないか確認。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 10. 収支モデル比較 -->
+            <section>
+                <h2>10. 収支モデルの比較シミュレーション</h2>
+                <p>一般的な運営モデルと、自社リソースを活用（高工賃化）した場合の月次収支比較は以下の通り試算される。（定員20名、稼働率90%想定）</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">項目</th>
+                            <th style="width: 35%;">モデルA：標準型<br><span style="font-size:11px; font-weight:normal;">（軽作業・内職中心）</span></th>
+                            <th style="width: 35%; background-color: var(--primary-light);">モデルB：連携活用型<br><span style="font-size:11px; font-weight:normal;">（施設外就労メイン）</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>平均工賃</strong></td>
+                            <td>約 1.5万円 /月</td>
+                            <td style="background-color: var(--primary-light);"><strong>4.5万円以上 /月</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>基本報酬単価</strong></td>
+                            <td>低〜中水準</td>
+                            <td style="background-color: var(--primary-light);"><strong>高水準</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>月間売上予測</strong><br><span style="font-size:11px;">(給付費収入)</span></td>
+                            <td>約 270万円</td>
+                            <td style="background-color: var(--primary-light); color: var(--primary-color); font-weight: bold;">約 350万〜390万円</td>
+                        </tr>
+                        <tr>
+                            <td><strong>考察</strong></td>
+                            <td>一般的な内職作業のみでは収益性が低くなりがちである。</td>
+                            <td style="background-color: var(--primary-light);">自社案件による工賃向上が、事業所収益の大幅な改善に直結する。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 11. 総括 -->
+            <section>
+                <h2>11. 総括</h2>
+                <p>就労継続支援B型事業は、国からの給付費による安定性を持ちつつも、利用者の工賃向上（＝事業収入の確保）が経営の鍵を握るモデルである。</p>
+                <p>当社においては、<strong>千葉県大網に「3つの有料老人ホーム」を含む5拠点の介護アセット</strong>を有しており、ここから排出される清掃・リネン交換等の業務量は、B型事業所にとって極めて魅力的な「仕事の源泉」となる。</p>
+                <p>検討中のM&A案件については、対象拠点の立地が「大網エリアへのアクセス圏内」であるかどうかが最大の判断材料となる。もし地理的条件が合致すれば、大規模な利用者（400名）と豊富な業務量（老人ホーム3棟分）が即座に結びつき、極めて高い投資対効果が期待できる。</p>
+            </section>
+
+            <!-- 12. よくある質問 (FAQ) -->
+            <section>
+                <h2>12. よくある質問（FAQ）</h2>
+                <p>開業や運営に関して、頻出する疑問点を以下にまとめました。</p>
+                <div class="box">
+                    <div class="faq-item">
+                        <div class="faq-question">就業場所は「施設内」「施設外」の1つしか選べないのですか？</div>
+                        <div class="faq-answer">
+                            いいえ、<strong>組み合わせが可能</strong>です。実際に多くの事業所が、「Aチームは施設内でパン作り、Bチームは施設外で清掃」といった形で並行運用しています。これにより、利用者の適性に合わせた配置が可能となり、リスク分散にもつながります。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">利用者（障害者）は集まるのでしょうか？</div>
+                        <div class="faq-answer">
+                            待っているだけでは集まりません。地域の「相談支援事業所」や特別支援学校、ハローワークとの関係構築が不可欠です。ただし、「工賃が高い（稼げる）」という実績がある事業所は利用者からの人気が高く、定員が埋まりやすい傾向にあります。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">介護事業所のスタッフが、B型事業所のスタッフを兼務できますか？</div>
+                        <div class="faq-answer">
+                            原則としては「専従（その仕事専門）」が求められますが、一定の条件（共生型サービスとしての指定など）を満たせば兼務が可能です。ただし、勤務時間の管理や報酬請求が複雑になるため、初期段階では明確に分ける運用が推奨されます。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">開業にあたって最大のハードルは何ですか？</div>
+                        <div class="faq-answer">
+                            「物件の確保」と「有資格者（サービス管理責任者）の採用」です。特にサービス管理責任者は実務経験要件が厳しく、人材不足が続いているため、事業計画の最初期から採用活動を行う必要があります。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 13. 用語集 -->
+            <section>
+                <h2>13. 【補足資料】用語集：これってどういう意味？</h2>
+                <p>本レポートに登場する専門用語を、平易な言葉で解説します。</p>
+                <div class="box box-gray">
+                    <div class="glossary-item">
+                        <span class="glossary-term">就労継続支援B型（しゅうろうけいぞくしえんびーがた）</span>
+                        <span class="glossary-desc">障害のある方が、雇用契約を結ばずに自分のペースで働く場所のこと。A型は「雇用あり（バイトに近い）」、B型は「雇用なし（リハビリに近い）」という違いがあります。</span>
+                    </div>
+                    <div class="glossary-item">
+                        <span class="glossary-term">工賃（こうちん）</span>
+                        <span class="glossary-desc">利用者さんが作業をして受け取るお金のこと。雇用契約がないので法律上「給料」や「賃金」と言えず、「工賃」と呼びます。金額は作業の売上から支払われます。</span>
+                    </div>
+                    <div class="glossary-item">
+                        <span class="glossary-term">訓練等給付費（くんれんとうきゅうふひ）</span>
+                        <span class="glossary-desc">事業所のメインの売上（運営費）のこと。利用者さんが1日通うごとに、国（役所）から事業所へ支払われる報酬です。だいたい1日1人あたり6,000円〜7,000円前後です。</span>
+                    </div>
+                    <div class="glossary-item">
+                        <span class="glossary-term">国保連（こくほれん）</span>
+                        <span class="glossary-desc">正式名称は「国民健康保険団体連合会」。役所の代わりに、毎月の売上（給付費）の審査や振込をしてくれる機関です。</span>
+                    </div>
+                    <div class="glossary-item">
+                        <span class="glossary-term">施設外就労（しせつがいしゅうろう）</span>
+                        <span class="glossary-desc">利用者さんとスタッフがチームになって、外の企業（今回の場合は当社の介護施設）へ行って作業すること。いわゆる「出向」や「請負作業」に近いイメージです。</span>
+                    </div>
+                    <div class="glossary-item">
+                        <span class="glossary-term">EBITDA（イービットディーエー）</span>
+                        <span class="glossary-desc">「金利・税金・償却前利益」のこと。会計上のテクニックを除いた、その会社が稼ぎ出す純粋なキャッシュフロー（現金収入）の実力を示す指標。M&Aで会社の値段を決める際によく使われます。</span>
+                    </div>
+                </div>
+            </section>
         </div>
 
     </div>
