@@ -236,11 +236,70 @@
             font-size: 14px;
         }
 
+        /* 印刷専用スタイル */
         @media print {
-            body { padding: 0; background-color: white; color: black; }
-            .container { box-shadow: none; padding: 0; max-width: 100%; margin: 0; }
+            @page {
+                margin: 15mm; /* 用紙の余白設定 */
+                size: auto;   /* 用紙サイズ自動 */
+            }
+
+            body {
+                padding: 0;
+                margin: 0;
+                background-color: white;
+                color: black;
+                font-size: 10.5pt; /* フォントサイズを印刷向けに縮小 */
+                line-height: 1.5;  /* 行間を少し詰める */
+                -webkit-print-color-adjust: exact; /* 背景色を強制的に印刷 */
+                print-color-adjust: exact;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+                margin: 0;
+                width: 100%;
+            }
+
             .no-print { display: none; }
-            section { page-break-inside: avoid; }
+
+            /* セクションごとの改ページ制御 */
+            section {
+                page-break-inside: avoid;
+                margin-bottom: 30px;
+            }
+
+            h1 { font-size: 22px; margin-bottom: 10px; }
+            h2 { font-size: 16px; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #ccc; }
+            h3 { font-size: 14px; margin-bottom: 10px; border-left: 4px solid #999; }
+
+            /* 2カラムレイアウトの維持と間隔調整 */
+            .grid-2 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            /* ボックス要素の枠線を印刷向けに調整 */
+            .box, .box-gray, .box-warning, .box-info, .box-alert {
+                border: 1px solid #ccc;
+                padding: 15px;
+                page-break-inside: avoid;
+            }
+
+            /* テーブルの文字サイズ調整 */
+            table {
+                font-size: 9pt;
+                width: 100%;
+            }
+            th, td {
+                padding: 8px;
+                border: 1px solid #999;
+            }
+
+            /* リンクのURL表示などを防ぐ */
+            a { text-decoration: none; color: black; }
         }
     </style>
 </head>
